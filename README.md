@@ -56,7 +56,20 @@ What we must do next is break down the clues into basic constraints:
 9. "Kelly is either St. Moritz or $1,250" → `A2 = (C4 or D3)`.
 10. "Of $1,250 and Jeff, one is Tombawomba and the other is Vancouver" → `(D3 / A1) = (B2 / C5)`.
 
-Now that we have only the crucial information required, let's begin. We start by instantiating both the `Puzzle` and the `Solver` individually, passing the number of values in each category as the sole argument to `Puzzle`:
+Now that we have only the crucial information required, let's begin. Make sure to `use` the `Puzzle` and `Solution` classes, as well as each of the `*Constraint` classes you will be needing. In our case, we need each one:
+
+```php
+use App\Classes\LogicGridSolver\Constraint\AllDifferentConstraint;
+use App\Classes\LogicGridSolver\Constraint\EitherOrConstraint;
+use App\Classes\LogicGridSolver\Constraint\EqualityConstraint;
+use App\Classes\LogicGridSolver\Constraint\InequalityConstraint;
+use App\Classes\LogicGridSolver\Constraint\RankExactDiffConstraint;
+use App\Classes\LogicGridSolver\Constraint\RankGreaterConstraint;
+use App\Classes\LogicGridSolver\Puzzle;
+use App\Classes\LogicGridSolver\Solver;
+```
+
+We start by instantiating both the `Puzzle` and the `Solver` individually, passing the number of values in each category as the sole argument to `Puzzle`:
 ```php
 $puzzle = new Puzzle(5); // 5 values per category
 $solver = new Solver();  // used later
